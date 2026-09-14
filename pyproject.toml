@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-api-quality-lab"
+version = "1.0.0"
+description = "A compact API automation and AI-output quality testing portfolio project."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Yang Zixuan" }]
+dependencies = [
+  "fastapi>=0.115,<1.0",
+  "pydantic>=2.9,<3.0",
+  "uvicorn>=0.30,<1.0",
+]
+
+[project.optional-dependencies]
+test = [
+  "httpx>=0.27,<1.0",
+  "pytest>=8.3,<9.0",
+  "pytest-cov>=5.0,<7.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers --cov=ai_quality_lab --cov-report=term-missing --cov-fail-under=90"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
